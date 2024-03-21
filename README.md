@@ -16,7 +16,7 @@ You can install Selestium using pip:
 You can use the `HTMLSession` class to make HTTP requests and retrieve HTML content. Here's a basic example:
 
 ```
-from selestium import HTMLSession
+from Selestium.selestium import HTMLSession
 
 session = HTMLSession()
 response = session.get("https://example.com")
@@ -28,7 +28,7 @@ print(response.text)
 Selestium also allows you to render JavaScript content using Selenium WebDriver. Here's how you can render a page and extract HTML content:
 
 ```
-from selestium import HTMLSession
+from Selestium.selestium import HTMLSession
 
 session = HTMLSession()
 response = session.get("https://example.com", render=True)
@@ -40,7 +40,7 @@ print(response.text)
 You can use BeautifulSoup to parse HTML documents and extract data. Here's an example:
 
 ```
-from selestium import HTMLSession
+from Selestium.selestium import HTMLSession
 
 session = HTMLSession()
 response = session.get("https://example.com")
