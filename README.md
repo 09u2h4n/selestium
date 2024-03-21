@@ -21,7 +21,7 @@ response = session.get("https://example.com")
 print(response.find("h1").text)
 ```
 
-For more information, please refer to the [documentation](https://github.com/yourusername/selestium)
+For more information, please refer to the [documentation](https://github.com/09u2h4n/selestium)
 
 ## License
 
