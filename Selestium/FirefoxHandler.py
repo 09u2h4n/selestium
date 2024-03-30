@@ -29,7 +29,7 @@ class FirefoxHandler:
         options.add_argument("--disable-gpu")
         detected_os = self.detect_os()
         geckodriver_path = self.detect_geckodriver()
-        if detected_os == "Andriod":
+        if detected_os == "Android":
             service = FirefoxService(executable_path=geckodriver_path)
             driver = webdriver.Firefox(options=options, service=service)
         else:

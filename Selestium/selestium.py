@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from FirefoxHandler import FirefoxHandler
 from ChromeHandler import ChromeHandler
 
-class HTMLSession(requests.Session):
+class HTMLNavigator(requests.Session):
     def __init__(self, browser='firefox'):
         super().__init__()
         self.headers = {
@@ -37,7 +37,7 @@ class HTMLSession(requests.Session):
         self.driver.quit()
         return response
 
-    def controller(self):
+    def browser_controller(self):
         if not self.driver:
             self.driver = self.handler.initialize_driver()
         return self.driver
@@ -58,8 +58,8 @@ class HTMLResponse:
 
 if __name__ == "__main__":
     # Example usage
-    session = HTMLSession(browser='firefox')
-    response = session.get("https://www.whatismybrowser.com/detect/is-javascript-enabled", render=True)
+    navigator = HTMLNavigator(browser='firefox')
+    response = navigator.get("https://www.whatismybrowser.com/detect/is-javascript-enabled", render=True)
     print(response.find("#detected_value")[0].get_text())
-    #driver = session.controller()
+    #driver = navigator.browser_controller()
     #driver.get()
