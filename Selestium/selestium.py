@@ -1,9 +1,9 @@
-import requests
+from requests import Session
 from bs4 import BeautifulSoup
 from .FirefoxHandler import FirefoxHandler
 from .ChromeHandler import ChromeHandler
 
-class HTMLNavigator(requests.Session):
+class HTMLRequests(Session):
     """
     A class for navigating HTML content using Selenium with Firefox or Chrome browsers.
 
@@ -111,8 +111,8 @@ class HTMLResponse:
 
 if __name__ == "__main__":
     # Example usage
-    navigator = HTMLNavigator(browser='firefox')
-    response = navigator.get("https://www.whatismybrowser.com/detect/is-javascript-enabled", render=True)
+    requests = HTMLRequests(browser='firefox')
+    response = requests.get("https://www.whatismybrowser.com/detect/is-javascript-enabled", render=True)
     print(response.find("#detected_value")[0].get_text())
     #driver = navigator.browser_controller()
     #driver.get()

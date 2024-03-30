@@ -62,13 +62,13 @@ Here's a basic example of how to use Selestium to render a web page and extract 
 ### Make a Request Without Rendering:
 
 ```python
-from Selestium import HTMLNavigator
+from Selestium import HTMLRequests
 
-# Initialize a HTMLNavigator instance with default settings (Firefox browser)
-navigator = HTMLNavigator()
+# Initialize a HTMLRequests instance with default settings (Firefox browser)
+req = HTMLRequests()
 
 # Make a GET request to a web page without rendering
-response = navigator.get("https://www.example.com")
+response = req.get("https://www.example.com")
 
 # Extract information from the response
 print(response.text)
@@ -77,13 +77,13 @@ print(response.text)
 ### Make a Request With Rendering:
 
 ```python
-from Selestium import HTMLNavigator
+from Selestium import HTMLRequests
 
-# Initialize a HTMLNavigator instance with Firefox browser
-navigator = HTMLNavigator(browser='firefox')
+# Initialize a HTMLRequests instance with Firefox browser
+req = HTMLRequests(browser='firefox')
 
 # Get a web page and render it using the browser
-response = navigator.get("https://www.example.com", render=True)
+response = req.get("https://www.example.com", render=True)
 
 # Extract information from the rendered page
 titles = response.find("h1")
@@ -94,13 +94,13 @@ for title in titles:
 ### Using the Controller Method:
 
 ```python
-from Selestium import HTMLNavigator
+from Selestium import HTMLRequests
 
-# Initialize a HTMLNavigator instance with Chrome browser
-navigator = HTMLNavigator(browser='chrome')
+# Initialize a HTMLRequests instance with Chrome browser
+req = HTMLRequests(browser='chrome')
 
 # Get the browser controller (WebDriver) instance
-driver = navigator.browser_controller()
+driver = req.browser_controller()
 
 # Navigate to a web page
 driver.get("https://www.example.com")
