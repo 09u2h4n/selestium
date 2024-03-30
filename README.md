@@ -16,6 +16,45 @@ You can install Selestium using pip:
 pip install selestium
 ```
 
+## Dependencies for Termux
+In Termux you need some dependencies to work. Later it will bee automatic.
+#### !!CHROME DOES NOT WORK JUST FIREFOX IN TERMUX!!
+First update and then install tur and x11 repos
+```
+pkg update -y; pkg install -y tur-repo x11-repo
+```
+Then install firefox and geckodriver
+```
+pkg install -y firefox geckodriver
+```
+And you are ready to go..
+
+## Dependencies for Linux
+In Linux also you need get [Firefox dependencies](https://www.mozilla.org/en-US/firefox/124.0.1/system-requirements/).
+
+Please note that GNU/Linux distributors may provide packages for your distribution which have different requirements.
+
+Firefox will not run at all without the following libraries or packages:
+glibc 2.17 or higher
+GTK+ 3.14 or higher
+libglib 2.42 or higher
+libstdc++ 4.8.1 or higher
+X.Org 1.0 or higher (1.7 or higher is recommended)
+For optimal functionality, we recommend the following libraries or packages:
+DBus 1.0 or higher
+NetworkManager 0.7 or higher
+PulseAudio
+
+For Debian-based distros:
+```
+sudo apt update -y && sudo apt install -y \
+    libc6 \
+    libgtk-3-0 \
+    libglib2.0-0 \
+    libstdc++6 \
+    xorg
+```
+
 ## Usage
 
 Here's a basic example of how to use Selestium to render a web page and extract information:
