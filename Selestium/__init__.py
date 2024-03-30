@@ -1,3 +1,8 @@
-from .selestium import HTMLSession, HTMLResponse
+# __init__.py
 
-__all__ = ["HTMLSession", "HTMLResponse"]
+from .selestium import HTMLNavigator
+
+from .ChromeHandler import ChromeHandler
+from .FirefoxHandler import FirefoxHandler
+
+__all__ = ['HTMLNavigator', 'ChromeHandler', 'FirefoxHandler']
