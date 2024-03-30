@@ -13,9 +13,6 @@ class HTMLRequests(Session):
 
     def __init__(self, browser='firefox'):
         super().__init__()
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-        }
         self.browser_type = browser.lower()
         self.driver = None  # Lazily initialize WebDriver
         self.handler = None
@@ -43,7 +40,7 @@ class HTMLRequests(Session):
                 self.driver = self.handler.initialize_driver()
             return self.render(url)
         else:
-            response = super().get(url, headers=self.headers, **kwargs)
+            response = super().get(url, **kwargs)
             response.raise_for_status()
             return HTMLResponse(response.content)
 

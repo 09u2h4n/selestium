@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name='selestium',
-    version='0.2.2',
+    version='0.2.3',
     description='A Python module for web scraping with Selenium and BeautifulSoup',
     long_description=long_description,
     long_description_content_type='text/markdown',
