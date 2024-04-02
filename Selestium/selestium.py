@@ -42,7 +42,7 @@ class HTMLRequests(Session):
         else:
             response = super().get(url, **kwargs)
             response.raise_for_status()
-            return HTMLResponse(response.content)
+            return HTMLResponse(response.content, original_response=response)
 
     def render(self, url):
         """
@@ -80,10 +80,12 @@ class HTMLResponse:
 
     Args:
         response (bytes): The response content.
+        original_response (requests.Response): The original requests Response object.
     """
 
-    def __init__(self, response):
+    def __init__(self, response, original_response=None):
         self.response = response
+        self.original_response = original_response
     
     @property
     def content(self):
@@ -105,6 +107,13 @@ class HTMLResponse:
             list: A list of BeautifulSoup Tag objects matching the selector.
         """
         return self.html().select(selector)
+
+    # Forward other method calls to the original response object
+    def __getattr__(self, name):
+        if self.original_response:
+            return getattr(self.original_response, name)
+        else:
+            raise AttributeError(f"'HTMLResponse' object has no attribute '{name}'")
 
 if __name__ == "__main__":
     # Example usage
