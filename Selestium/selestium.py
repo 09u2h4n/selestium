@@ -1,7 +1,7 @@
 from requests import Session
 from bs4 import BeautifulSoup
-from FirefoxHandler import FirefoxHandler
-from ChromeHandler import ChromeHandler
+from .FirefoxHandler import FirefoxHandler
+from .ChromeHandler import ChromeHandler
 
 class HTMLRequests(Session):
     """

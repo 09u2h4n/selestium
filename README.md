@@ -71,7 +71,7 @@ req = HTMLRequests()
 response = req.get("https://www.example.com")
 
 # Extract information from the response
-print(response.text)
+print(response.content)
 ```
 
 ### Make a Request With Rendering:
