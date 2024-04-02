@@ -1,7 +1,7 @@
 from requests import Session
 from bs4 import BeautifulSoup
-from .FirefoxHandler import FirefoxHandler
-from .ChromeHandler import ChromeHandler
+from FirefoxHandler import FirefoxHandler
+from ChromeHandler import ChromeHandler
 
 class HTMLRequests(Session):
     """
@@ -86,13 +86,13 @@ class HTMLResponse:
         self.response = response
     
     @property
-    def text(self):
-        """str: The response content as a string."""
+    def content(self):
+        """str: The response content."""
         return self.response
 
     def html(self):
         """BeautifulSoup: A BeautifulSoup object representing the parsed HTML."""
-        return BeautifulSoup(self.text, "html.parser")
+        return BeautifulSoup(self.content, "html.parser")
 
     def find(self, selector):
         """
@@ -109,7 +109,7 @@ class HTMLResponse:
 if __name__ == "__main__":
     # Example usage
     requests = HTMLRequests(browser='firefox')
-    response = requests.get("https://www.whatismybrowser.com/detect/is-javascript-enabled", render=True)
+    response = requests.get("https://www.whatismybrowser.com/detect/is-javascript-enabled", render=False)
     print(response.find("#detected_value")[0].get_text())
     #driver = navigator.browser_controller()
     #driver.get()
