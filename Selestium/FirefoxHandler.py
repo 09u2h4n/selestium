@@ -45,7 +45,7 @@ class FirefoxHandler:
                 return full_path
         return None
             
-    def initialize_driver(self):
+    def initialize_driver(self, headless=True, disable_gpu=True, **kwargs):
         """
         Initializes a WebDriver instance for Firefox with headless mode enabled.
 
@@ -53,11 +53,13 @@ class FirefoxHandler:
             WebDriver: The initialized WebDriver instance.
         """
         options = FirefoxOptions()
-        options.add_argument("--headless")
-        options.add_argument("--disable-gpu")
+        if headless:
+            options.add_argument("--headless")
+        if disable_gpu:
+            options.add_argument("--disable-gpu")
         detected_os = self.detect_os()
-        geckodriver_path = self.detect_geckodriver()
         if detected_os == "Android":
+            geckodriver_path = self.detect_geckodriver()
             service = FirefoxService(executable_path=geckodriver_path)
             driver = webdriver.Firefox(options=options, service=service)
         else:

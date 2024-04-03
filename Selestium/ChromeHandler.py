@@ -14,7 +14,7 @@ class ChromeHandler:
     def __init__(self) -> None:
         pass
 
-    def initialize_driver(self):
+    def initialize_driver(self, headless=True, disable_gpu=True, **kwargs):
         """
         Initializes a WebDriver instance for Chrome with headless mode enabled.
 
@@ -22,7 +22,9 @@ class ChromeHandler:
             WebDriver: The initialized WebDriver instance.
         """
         options = ChromeOptions()
-        options.add_argument("--headless")
-        options.add_argument("--disable-gpu")
+        if headless:
+            options.add_argument("--headless")
+        if disable_gpu:
+            options.add_argument("--disable-gpu")
         driver = webdriver.Chrome(options=options)
         return driver

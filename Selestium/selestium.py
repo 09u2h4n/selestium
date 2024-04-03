@@ -75,7 +75,7 @@ class HTMLRequests(Session):
         self.driver.quit()
         return response
 
-    def browser_controller(self):
+    def browser_controller(self, headless=True):
         """
         Returns the browser controller (WebDriver) instance.
 
@@ -83,7 +83,7 @@ class HTMLRequests(Session):
             WebDriver: The browser controller instance.
         """
         if not self.driver:
-            self.driver = self.handler.initialize_driver()
+            self.driver = self.handler.initialize_driver(headless=headless)
         return self.driver
 
 class HTMLResponse:
